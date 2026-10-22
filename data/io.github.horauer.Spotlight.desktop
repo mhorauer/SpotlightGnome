@@ -4,6 +4,6 @@ Name=Spotlight
 Comment=Presenter spotlight for the Logitech Spotlight
 Exec=spotlight
 Icon=video-display
-Categories=Utility;Office;
+Categories=Office;Presentation;
 Keywords=presentation;presenter;logitech;pointer;highlight;
 StartupNotify=true
