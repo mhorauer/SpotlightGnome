@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Spotlight
+Comment=Presenter spotlight for the Logitech Spotlight
+Exec=spotlight
+Icon=video-display
+Categories=Utility;Office;
+Keywords=presentation;presenter;logitech;pointer;highlight;
+StartupNotify=true

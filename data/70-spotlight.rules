@@ -1,0 +1,11 @@
+# Lets the logged-in desktop user read input events from the Logitech Spotlight,
+# which the Spotlight app needs to know when the device is moving the pointer.
+# Install: sudo cp 70-spotlight.rules /etc/udev/rules.d/
+#          sudo udevadm control --reload && sudo udevadm trigger --subsystem-match=input
+# (The number must stay below 73 so the "uaccess" tag is applied.)
+
+# Spotlight via its USB receiver
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c53e", TAG+="uaccess"
+
+# Spotlight via Bluetooth
+SUBSYSTEM=="input", KERNEL=="event*", KERNELS=="0005:046D:B503.*", TAG+="uaccess"
