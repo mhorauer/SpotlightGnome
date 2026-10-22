@@ -4,6 +4,8 @@ A presenter spotlight for the **Logitech Spotlight** on **GNOME** (Wayland), wri
 with GTK 4 and libadwaita. Inspired by [Projecteur](https://github.com/gbin/Projecteur),
 with a smaller feature set aimed at working smoothly on a standard Fedora desktop.
 
+**Note:** This application was auto-generated using Antrophic/Claude (so beware).
+
 Hold the top button on the Spotlight and move it: the screen dims except for a circle
 around the pointer. Let go, and it disappears. Next/Previous keep working as usual.
 
