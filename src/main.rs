@@ -108,8 +108,8 @@ fn add_actions(app: &adw::Application, settings: &SettingsWindow) {
             .application_icon("video-display")
             .version(env!("CARGO_PKG_VERSION"))
             .comments("A presenter spotlight for the Logitech Spotlight on GNOME.\nInspired by Projecteur.")
-            .website("https://github.com/gbin/Projecteur")
-            .license_type(gtk::License::MitX11)
+            .website("https://github.com/mhorauer/SpotlightGnome")
+            .license_type(gtk::License::Gpl30)
             .build()
             .present(Some(&window));
     });

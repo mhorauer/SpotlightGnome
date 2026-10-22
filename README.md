@@ -62,3 +62,7 @@ with fractional scaling it may look slightly soft.
 
 Any input device named like the Spotlight is detected, so a virtual one created with
 `/dev/uinput` (e.g. named `SPOTLIGHT Mouse`) can drive the app end to end.
+
+## License
+
+GPL-3.0-or-later. See [LICENSE](LICENSE).
