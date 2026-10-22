@@ -41,7 +41,7 @@ spotlight --test       show the spotlight for a few seconds
 ```
 
 Settings are stored in `~/.config/spotlight/config.toml`. Logs are written to the terminal
-and to `./spotlight/spotlight.log.YYYY-MM-DD` (last 7 days kept). Use `RUST_LOG=debug` for more detail.
+and to `~/.local/state/spotlight/spotlight.log.YYYY-MM-DD` (last 7 days kept). Use `RUST_LOG=debug` for more detail.
 
 ## How it works
 

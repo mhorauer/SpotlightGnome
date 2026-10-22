@@ -1,18 +1,22 @@
+use std::path::PathBuf;
+
 use tracing_appender::non_blocking::WorkerGuard;
 use tracing_appender::rolling::{RollingFileAppender, Rotation};
 use tracing_subscriber::{EnvFilter, fmt, prelude::*};
 
-/// Logs to the terminal and to spotlight/spotlight.log.YYYY-MM-DD (a new file each day, last 7 kept).
+/// Logs to the terminal and to ~/.local/state/spotlight/spotlight.log.YYYY-MM-DD
+/// (a new file each day, last 7 kept). Honors $XDG_STATE_HOME.
 /// Keep the returned guard alive until the program exits so buffered logs get written.
 pub fn init() -> WorkerGuard {
     // Uses RUST_LOG if set (e.g. RUST_LOG=debug), otherwise defaults to "info".
     let filter = EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info"));
 
+    let log_dir = state_dir().join("spotlight");
     let file_appender = RollingFileAppender::builder()
         .rotation(Rotation::DAILY)
         .filename_prefix("spotlight.log")
         .max_log_files(7) // keep the last 7 days, delete older files
-        .build("spotlight")
+        .build(&log_dir)
         .expect("failed to create log file appender");
     let (file_writer, guard) = tracing_appender::non_blocking(file_appender);
 
@@ -23,4 +27,12 @@ pub fn init() -> WorkerGuard {
         .init();
 
     guard
+}
+
+/// $XDG_STATE_HOME, or ~/.local/state if it is unset or not an absolute path.
+fn state_dir() -> PathBuf {
+    std::env::var_os("XDG_STATE_HOME")
+        .map(PathBuf::from)
+        .filter(|p| p.is_absolute())
+        .unwrap_or_else(|| gtk::glib::home_dir().join(".local/state"))
 }
