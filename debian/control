@@ -1,0 +1,27 @@
+Source: spotlight
+Section: utils
+Priority: optional
+Maintainer: Martin Horauer <mhorauer@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               cargo (>= 1.85),
+               rustc (>= 1.85),
+               pkgconf,
+               libgtk-4-dev (>= 4.14),
+               libadwaita-1-dev (>= 1.6),
+               desktop-file-utils
+Standards-Version: 4.7.0
+Homepage: https://github.com/mhorauer/SpotlightGnome
+Vcs-Git: https://github.com/mhorauer/SpotlightGnome.git
+Rules-Requires-Root: no
+
+Package: spotlight
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: xwayland
+Description: Presenter spotlight for the Logitech Spotlight on GNOME
+ Hold the top button on the Logitech Spotlight and move it: the screen dims
+ except for a circle around the pointer. Let go, and it disappears.
+ .
+ Works on GNOME (Wayland) via XWayland override-redirect windows, with a
+ libadwaita settings window. Includes a udev rule that lets the logged-in
+ user read the Spotlight's input events.

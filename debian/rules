@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cargo build --release --locked
+
+override_dh_auto_test:
+	desktop-file-validate data/io.github.horauer.Spotlight.desktop
+
+override_dh_auto_clean:
+	rm -rf target
+
+override_dh_auto_install:
+	install -Dm755 target/release/spotlight debian/spotlight/usr/bin/spotlight
+	install -Dm644 data/io.github.horauer.Spotlight.desktop debian/spotlight/usr/share/applications/io.github.horauer.Spotlight.desktop
+	install -Dm644 data/70-spotlight.rules debian/spotlight/usr/lib/udev/rules.d/70-spotlight.rules

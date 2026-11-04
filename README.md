@@ -36,6 +36,17 @@ Re-plug the receiver if the device isn't detected right away.
 
 To build the RPM yourself: `./packaging/build-rpm.sh` (output in `packaging/rpmbuild/`).
 
+### From the .deb (Debian 13 / Ubuntu 25.04 or newer)
+
+Download the `.deb` from the [latest release](https://github.com/mhorauer/SpotlightGnome/releases/latest) and run:
+
+```bash
+sudo apt install ./spotlight_*_amd64.deb
+```
+
+To build it yourself (needs podman; builds inside a Debian 13 container): `./packaging/build-deb.sh`
+(output in `packaging/debbuild/`).
+
 ### From source
 
 Needs Rust plus `gtk4-devel` and `libadwaita-devel`:
