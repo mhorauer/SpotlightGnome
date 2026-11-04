@@ -23,6 +23,21 @@ or Logitech's vendor protocol (HID++), which would add a lot of complexity.
 
 ## Install
 
+### From the RPM (Fedora)
+
+Download the RPM from the [latest release](https://github.com/mhorauer/SpotlightGnome/releases/latest) and run:
+
+```bash
+sudo dnf install ./spotlight-*.x86_64.rpm
+```
+
+This installs `/usr/bin/spotlight`, the app grid entry and the udev rule.
+Re-plug the receiver if the device isn't detected right away.
+
+To build the RPM yourself: `./packaging/build-rpm.sh` (output in `packaging/rpmbuild/`).
+
+### From source
+
 Needs Rust plus `gtk4-devel` and `libadwaita-devel`:
 
 ```bash
